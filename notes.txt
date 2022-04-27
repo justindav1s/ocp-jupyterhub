@@ -1,0 +1,14 @@
+oc delete project jupyterhub
+
+oc new-project jupyterhub
+
+oc apply -f ../jupyterhub-quickstart-3.4.0/image-streams/gpu-notebook-base.yaml
+oc apply -f ../jupyterhub-quickstart-3.4.0/image-streams/tensorflow-gpu-notebook.yaml
+oc apply -f ../jupyterhub-quickstart-3.4.0/image-streams/jupyterhub.yaml
+oc apply -f ../jupyterhub-quickstart-3.4.0/image-streams/s2i-minimal-notebook.yaml
+
+oc create configmap jupyterhub-cfg --from-file=jupyterhub_config.py=jupyterhub_config.py
+
+oc create -f templates.yaml
+
+oc new-app --template jupyterhub-ocp-oauth
