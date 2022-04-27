@@ -40,12 +40,12 @@ items:
       - name: SINGLEUSER_MEM_LIMIT
         value: 1Gi
     objects:
-      - kind: ImageStream
-        apiVersion: v1
-        metadata:
-          name: ${APPLICATION_NAME}-img
-          labels:
-            app: ${APPLICATION_NAME}
+      # - kind: ImageStream
+      #   apiVersion: v1
+      #   metadata:
+      #     name: ${APPLICATION_NAME}-img
+      #     labels:
+      #       app: ${APPLICATION_NAME}
       - kind: BuildConfig
         apiVersion: v1
         metadata:
