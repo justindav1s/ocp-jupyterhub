@@ -59,7 +59,7 @@ items:
           source:
             type: Git
             git:
-              uri: https://github.com/aicoe/jupyterhub-ocp-oauth
+              uri: https://github.com/justindav1s/ocp-jupyterhub.git
           strategy:
             type: Source
             sourceStrategy:
@@ -69,15 +69,15 @@ items:
           output:
             to:
               kind: ImageStreamTag
-              name: ${APPLICATION_NAME}-img:latest
-      # - kind: ConfigMap
-      #   apiVersion: v1
-      #   metadata:
-      #     name: ${APPLICATION_NAME}-cfg
-      #     labels:
-      #       app: ${APPLICATION_NAME}
-      #   data:
-      #     jupyterhub_config.py: ${JUPYTERHUB_CONFIG}
+              name: ${APPLICATION_NAME}-img:odh
+      - kind: ConfigMap
+        apiVersion: v1
+        metadata:
+          name: ${APPLICATION_NAME}-cfg
+          labels:
+            app: ${APPLICATION_NAME}
+        data:
+          jupyterhub_config.py: ${JUPYTERHUB_CONFIG}
       - kind: ServiceAccount
         apiVersion: v1
         metadata:

@@ -1,0 +1,15 @@
+kind: List
+apiVersion: v1
+items:
+- kind: ImageStream
+  apiVersion: image.openshift.io/v1
+  metadata:
+    name: tensorflow-gpu-notebook
+  spec:
+    lookupPolicy:
+      local: true
+    tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/justindav1s/tensorflow-gpu-notebook:latest
